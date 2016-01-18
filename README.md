@@ -8,4 +8,4 @@ This bot will take any message in the form of inline math e.g
 $\frac{\pi}{2}$
 ```
 
-and respond with an embedded gif rendered by [http://www.codecogs.com/latex/eqneditor.php](codecogs.com).
+and respond with an embedded gif rendered by [codecogs.com](http://www.codecogs.com/latex/eqneditor.php).
