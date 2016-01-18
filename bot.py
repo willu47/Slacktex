@@ -6,7 +6,7 @@ import json
 from urllib import parse
 
 with open('secret.txt', 'r') as f:
-    API_KEY=f.readline().rstrip())
+    API_KEY=f.readline().rstrip()
 slack = Slacker(API_KEY)
 deets = slack.rtm.start()
 # websocket.enableTrace(True)
