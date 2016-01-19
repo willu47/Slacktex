@@ -29,7 +29,7 @@ def on_message(ws,message):
                 corrected = re.sub(r'\$','',corrected)
                 slack.chat.post_message(message['channel'],'Rendered that for you.',
                 attachments=json.dumps([{'title':'Equation',
-                'image_url':'https://latex.codecogs.com/gif.latex?%5Cdpi%7B300%7D%20%5Cbg_white%20'+corrected}]),
+                'image_url':'https://latex.codecogs.com/gif.latex?%5Cdpi%7B300%7D%20%5Cbg_white%20'+parse.quote(corrected)}]),
                 as_user=True)
 
 ws.on_open = on_open
