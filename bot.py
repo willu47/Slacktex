@@ -13,6 +13,7 @@ deets = slack.rtm.start()
 ws = websocket.WebSocketApp(deets.body['url'])
 
 import re
+from regex import textraction
 
 USER_ID = ''
 
@@ -24,12 +25,12 @@ def on_message(ws,message):
     print(message)
     if message['type'] == 'message':
         if message['user'] != ws.user_id:
-            if re.match(r'\$[\S\s]+\$', message['text']) is not None:
-                corrected = re.sub(r'\\\\',r'\\',message['text'])
-                corrected = re.sub(r'\$','',corrected)
+            if re.search(r'\$[\S\s]+\$', message['text']):
+                latex = textraction(message['text'])
+
                 slack.chat.post_message(message['channel'],'Rendered that for you.',
                 attachments=json.dumps([{'title':'Equation',
-                'image_url':'https://latex.codecogs.com/gif.latex?%5Cdpi%7B300%7D%20%5Cbg_white%20'+parse.quote(corrected)}]),
+                'image_url':'https://latex.codecogs.com/gif.latex?%5Cdpi%7B300%7D%20%5Cbg_white%20'+parse.quote(latex)}]),
                 as_user=True)
 
 ws.on_open = on_open
