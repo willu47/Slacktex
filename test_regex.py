@@ -12,7 +12,8 @@ class TestSlackBot:
                         '$exp(i \pi) + 1 = 0$',
                         'Come now, David, be a little more advanced: $\Box^2 A_\alpha = \mu J_\alpha$',
                         '$\nabla \cdot B = 0$ ... or it was 1?]',
-                        '$$\sum dbl_{dollar}$$']
+                        '$$\sum dbl_{dollar}$$',
+                        'A message\n over several lines\n with $\LaTeX$\n near the end']
 
         self.desired = ['\LaTeX',
                         '\LaTeX',
@@ -21,7 +22,8 @@ class TestSlackBot:
                         'exp(i \pi) + 1 = 0',
                         '\Box^2 A_\alpha = \mu J_\alpha',
                         '\nabla \cdot B = 0',
-                        '\sum dbl_{dollar}']
+                        '\sum dbl_{dollar}',
+                        '\LaTeX']
 
     def test_textraction(self):
         for message, desired in zip(self.messages, self.desired):
